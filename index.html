@@ -1,0 +1,803 @@
+Ini full kodenya, sudah tanpa //, /* */, dan <!-- -->:
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUARA SISWA | SMA Negeri 19 Palembang</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f4f8ff;
+    color:#10213d;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:420px;
+    height:420px;
+    background:#d7e8ff;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.7;
+    top:-180px;
+    right:-120px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#e3efff;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.8;
+    bottom:-180px;
+    left:-150px;
+    z-index:-1;
+}
+
+nav{
+    position:fixed;
+    top:18px;
+    left:5%;
+    right:5%;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+    background:rgba(255,255,255,.78);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.9);
+    border-radius:18px;
+    box-shadow:0 15px 45px rgba(25,80,150,.08);
+    z-index:100;
+}
+
+.logo{
+    font-size:17px;
+    font-weight:900;
+    color:#1258ae;
+    letter-spacing:-.5px;
+}
+
+.logo span{
+    color:#4285f4;
+}
+
+nav a{
+    text-decoration:none;
+    color:#647791;
+    font-size:13px;
+    font-weight:700;
+    margin-left:22px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#1769d1;
+}
+
+.hero{
+    min-height:100vh;
+    padding:150px 7% 100px;
+    display:flex;
+    align-items:center;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            #d9e9ff,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            #e8f2ff,
+            transparent 35%
+        );
+}
+
+.hero-content{
+    max-width:950px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 15px;
+    border-radius:50px;
+    background:#e4efff;
+    color:#1769d1;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:25px;
+}
+
+.badge i{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#4285f4;
+    box-shadow:0 0 12px #4285f4;
+}
+
+h1{
+    font-size:clamp(50px,9vw,105px);
+    line-height:.9;
+    letter-spacing:-7px;
+    font-weight:900;
+}
+
+h1 span{
+    color:#1769d1;
+}
+
+.hero-text{
+    max-width:720px;
+    margin-top:32px;
+    color:#647791;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.btn{
+    padding:15px 22px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.primary{
+    background:#1769d1;
+    color:white;
+    box-shadow:0 12px 30px rgba(23,105,209,.25);
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+}
+
+.secondary{
+    background:white;
+    color:#1769d1;
+    border:1px solid #d8e5f7;
+}
+
+.secondary:hover{
+    transform:translateY(-4px);
+}
+
+section{
+    padding:110px 7%;
+}
+
+.label{
+    color:#4285f4;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.title{
+    font-size:clamp(35px,5vw,55px);
+    line-height:1;
+    letter-spacing:-3px;
+    font-weight:900;
+}
+
+.desc{
+    max-width:680px;
+    margin-top:18px;
+    color:#718198;
+    line-height:1.8;
+}
+
+.cards{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    padding:32px;
+    background:rgba(255,255,255,.8);
+    backdrop-filter:blur(15px);
+    border:1px solid #dfebfa;
+    border-radius:24px;
+    box-shadow:0 15px 45px rgba(40,85,140,.07);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 55px rgba(40,85,140,.12);
+}
+
+.number{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#e5efff;
+    color:#1769d1;
+    font-size:12px;
+    font-weight:900;
+}
+
+.card h3{
+    margin-top:25px;
+    font-size:21px;
+}
+
+.card p{
+    margin-top:12px;
+    color:#718198;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.teacher{
+    margin-top:50px;
+    padding:45px;
+    background:linear-gradient(135deg,#ffffff,#edf5ff);
+    border:1px solid #dbe8f8;
+    border-radius:28px;
+    box-shadow:0 20px 60px rgba(43,91,150,.08);
+    position:relative;
+    overflow:hidden;
+}
+
+.teacher::after{
+    content:"BINTI";
+    position:absolute;
+    right:-15px;
+    bottom:-45px;
+    font-size:130px;
+    font-weight:900;
+    color:#edf4ff;
+    pointer-events:none;
+}
+
+.teacher-content{
+    position:relative;
+    z-index:2;
+}
+
+.teacher h2{
+    font-size:34px;
+    letter-spacing:-1px;
+}
+
+.teacher h2 span{
+    color:#1769d1;
+}
+
+.teacher p{
+    max-width:760px;
+    margin-top:15px;
+    color:#667991;
+    line-height:1.8;
+}
+
+.money{
+    margin-top:50px;
+    padding:55px;
+    background:#1769d1;
+    color:white;
+    border-radius:30px;
+    box-shadow:0 25px 60px rgba(23,105,209,.25);
+    position:relative;
+    overflow:hidden;
+}
+
+.money::after{
+    content:"300K";
+    position:absolute;
+    right:-20px;
+    top:-50px;
+    font-size:150px;
+    font-weight:900;
+    color:rgba(255,255,255,.07);
+}
+
+.money small{
+    position:relative;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.money h2{
+    position:relative;
+    font-size:clamp(48px,8vw,90px);
+    line-height:1;
+    letter-spacing:-5px;
+    margin:15px 0;
+}
+
+.money p{
+    position:relative;
+    max-width:720px;
+    color:#dceaff;
+    line-height:1.8;
+}
+
+.quote{
+    padding:90px 8%;
+    text-align:center;
+    background:white;
+    border:1px solid #dce8f8;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(40,85,140,.07);
+}
+
+.quote p{
+    font-size:clamp(30px,5vw,62px);
+    line-height:1;
+    letter-spacing:-3px;
+    font-weight:900;
+}
+
+.quote span{
+    color:#1769d1;
+}
+
+.questions{
+    max-width:850px;
+    margin-top:45px;
+}
+
+.question{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:25px 5px;
+    border-bottom:1px solid #dce5f0;
+    color:#50647e;
+    font-size:16px;
+    transition:.3s;
+}
+
+.question:hover{
+    padding-left:12px;
+    color:#1769d1;
+}
+
+.q-number{
+    min-width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:#e7f0ff;
+    color:#1769d1;
+    font-size:12px;
+    font-weight:900;
+}
+
+footer{
+    padding:55px 7%;
+    background:white;
+    border-top:1px solid #e1e8f2;
+    color:#7a8ba1;
+    font-size:13px;
+}
+
+.footer-title{
+    color:#1769d1;
+    font-size:17px;
+    font-weight:900;
+}
+
+.footer-by{
+    margin-top:18px;
+    display:inline-block;
+    padding:9px 14px;
+    background:#edf5ff;
+    border-radius:10px;
+    color:#1769d1;
+    font-weight:800;
+    font-size:12px;
+}
+
+@media(max-width:750px){
+
+    nav{
+        left:4%;
+        right:4%;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .hero,
+    section{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    h1{
+        letter-spacing:-4px;
+    }
+
+    .hero-text{
+        font-size:16px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .teacher,
+    .money{
+        padding:30px;
+    }
+
+    .money h2{
+        letter-spacing:-3px;
+    }
+
+    .quote{
+        padding:60px 25px;
+    }
+
+    .question{
+        align-items:flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        SMA NEGERI 19 <span>PALEMBANG</span>
+    </div>
+
+    <div>
+        <a href="#masalah">Masalah</a>
+        <a href="#binti">Ibuk Binti</a>
+        <a href="#uang">Rp300K</a>
+        <a href="#tuntutan">Pertanyaan</a>
+    </div>
+
+</nav>
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            <i></i>
+            ASPIRASI SISWA
+        </div>
+
+        <h1>
+            KAMI CUMA<br>
+            MINTA <span>JELAS.</span>
+        </h1>
+
+        <p class="hero-text">
+            SMA NEGERI 19 PALEMBANG.
+            Rp300.000 per bulan menjadi salah satu hal
+            yang membuat kami bertanya.
+            Kami memahami bahwa sebagian iuran komite
+            bersifat sukarela, bukan paksaan.
+            Yang kami minta hanyalah transparansi mengenai
+            penggunaan dana tersebut.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#uang" class="btn primary">
+                Rp300.000 / BULAN
+            </a>
+
+            <a href="#tuntutan" class="btn secondary">
+                LIHAT PERTANYAAN
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section id="masalah">
+
+    <div class="label">
+        SMA NEGERI 19 PALEMBANG
+    </div>
+
+    <h2 class="title">
+        Bukan soal mau ribut.
+    </h2>
+
+    <p class="desc">
+        Kami hanya ingin sesuatu yang menyangkut pembayaran
+        dijelaskan secara terbuka.
+        Kami memahami bahwa iuran komite sebagian bersifat
+        sukarela dan bukan paksaan.
+    </p>
+
+    <div class="cards">
+
+        <article class="card">
+
+            <div class="number">01</div>
+
+            <h3>
+                Rp300 Ribu?
+            </h3>
+
+            <p>
+                Jika memang ada iuran komite sebesar
+                Rp300.000 setiap bulan, wajar jika
+                muncul pertanyaan mengenai tujuan
+                dan penggunaannya.
+            </p>
+
+        </article>
+
+        <article class="card">
+
+            <div class="number">02</div>
+
+            <h3>
+                Sukarela
+            </h3>
+
+            <p>
+                Kami memahami bahwa sebagian iuran
+                bersifat sukarela, bukan paksaan.
+                Karena itu, yang kami persoalkan
+                adalah kejelasan informasinya.
+            </p>
+
+        </article>
+
+        <article class="card">
+
+            <div class="number">03</div>
+
+            <h3>
+                Transparansi
+            </h3>
+
+            <p>
+                Kami ingin mengetahui pemasukan,
+                penggunaan, dan pertanggungjawaban
+                dana secara jelas.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<section id="binti">
+
+    <div class="label">
+        PESAN
+    </div>
+
+    <h2 class="title">
+        Untuk Ibuk Binti.
+    </h2>
+
+    <div class="teacher">
+
+        <div class="teacher-content">
+
+            <h2>
+                Ibuk <span>Binti</span>
+            </h2>
+
+            <p>
+                Kami bukan mau cari ribut, Ibuk.
+                Kami cuma ingin tahu dengan jelas:
+                uang komite yang dibayar setiap bulan
+                itu sebenarnya digunakan untuk apa?
+            </p>
+
+            <p>
+                Kami memahami bahwa sebagian iuran
+                bersifat sukarela dan bukan paksaan.
+                Tetapi transparansi tetap penting agar
+                siswa dan orang tua mengetahui penggunaan
+                dana yang terkumpul.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="uang">
+
+    <div class="label">
+        PERTANYAAN UTAMA
+    </div>
+
+    <h2 class="title">
+        Angka yang bikin bertanya.
+    </h2>
+
+    <div class="money">
+
+        <small>
+            IURAN KOMITE
+        </small>
+
+        <h2>
+            Rp300.000
+        </h2>
+
+        <p>
+            <strong>PER BULAN.</strong>
+            Kami memahami bahwa sebagian iuran bersifat
+            sukarela, bukan paksaan.
+            Namun, kami tetap ingin mengetahui dasar,
+            tujuan penggunaan, dan pertanggungjawaban
+            dana yang terkumpul.
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="quote">
+
+        <p>
+            "KALAU UANGNYA JELAS,
+            <span>KENAPA KAMI TIDAK BOLEH BERTANYA?</span>"
+        </p>
+
+    </div>
+
+</section>
+
+<section id="tuntutan">
+
+    <div class="label">
+        KAMI BERTANYA
+    </div>
+
+    <h2 class="title">
+        Mana penjelasannya?
+    </h2>
+
+    <p class="desc">
+        Kami tidak meminta sesuatu yang berlebihan.
+        Kami hanya ingin informasi yang jelas,
+        terbuka, dan dapat dipertanggungjawabkan.
+    </p>
+
+    <div class="questions">
+
+        <div class="question">
+
+            <div class="q-number">
+                01
+            </div>
+
+            <p>
+                Berapa total dana yang terkumpul setiap bulan?
+            </p>
+
+        </div>
+
+        <div class="question">
+
+            <div class="q-number">
+                02
+            </div>
+
+            <p>
+                Untuk apa saja dana tersebut digunakan?
+            </p>
+
+        </div>
+
+        <div class="question">
+
+            <div class="q-number">
+                03
+            </div>
+
+            <p>
+                Apakah tersedia laporan penggunaan dana?
+            </p>
+
+        </div>
+
+        <div class="question">
+
+            <div class="q-number">
+                04
+            </div>
+
+            <p>
+                Bagaimana siswa dan orang tua dapat mengetahui
+                penggunaan dana tersebut?
+            </p>
+
+        </div>
+
+        <div class="question">
+
+            <div class="q-number">
+                05
+            </div>
+
+            <p>
+                Jika iuran bersifat sukarela, bagaimana mekanisme
+                dan penjelasannya disampaikan kepada orang tua?
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-title">
+        SUARA SISWA.
+    </div>
+
+    <p style="margin-top:8px;">
+        SMA NEGERI 19 PALEMBANG • Aspirasi • Transparansi
+    </p>
+
+    <div class="footer-by">
+        Web by Jack
+    </div>
+
+</footer>
+
+</body>
+</html>
